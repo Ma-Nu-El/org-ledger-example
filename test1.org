@@ -1,0 +1,82 @@
+:PROPERTIES:
+:ID:       3e38e2cd-02e4-498a-bcdd-c760d14a9ec3
+:END:
+#+TITLE: Test1
+#+subtitle: inspired by https://c-tan.com/post/ledger-org-babel-example/
+
+
+* TOC :TOC_2:noexport:
+- [[#initial-resources][Initial resources]]
+- [[#income][Income]]
+- [[#outcome][Outcome]]
+- [[#stats][Stats]]
+
+* Initial resources
+#+name: startup
+#+BEGIN_SRC ledger :noweb yes
+2016/07/01 * Opening Balance
+    Assets:Cash                                          20000 USD
+    Assets:Itunes                                         5000 USD
+    Assets:Steam                                          1000 USD
+    Equity:Opening Balance
+#+END_SRC
+
+
+* Income
+
+#+name: income
+#+BEGIN_SRC ledger :noweb yes
+2016/07/15 * Kyoto University
+    Assets:Some Bank                                      200000 USD
+    Income:Salary
+#+END_SRC
+
+* Outcome
+
+#+name: expenses
+#+BEGIN_SRC ledger :noweb yes
+2016/07/03 * 生鮮館
+    Expenses:Food                                         2500 USD
+    Assets:Cash
+
+2016/07/05 * LAWSON
+    Expenses:Food                                          580 USD
+    Expenses:Book                                         1200 USD
+    Assets:Cash
+
+2016/07/12 * App Store
+    Expenses:App                                           500 USD
+    Assets:Itunes
+
+2016/07/15 * Steam Store
+    Expenses:Game                                         2000 USD
+    Assets:Steam
+#+END_SRC
+
+* Stats
+
+
+#+name: balance
+#+BEGIN_SRC ledger :cmdline bal :noweb yes :results replace
+<<startup>>
+<<income>>
+<<expenses>>
+#+END_SRC
+
+#+RESULTS: balance
+#+begin_example
+          219220 USD  Assets
+           15720 USD    Cash
+            4500 USD    Itunes
+          200000 USD    Some Bank
+           -1000 USD    Steam
+          -26000 USD  Equity:Opening Balance
+            6780 USD  Expenses
+             500 USD    App
+            1200 USD    Book
+            3080 USD    Food
+            2000 USD    Game
+         -200000 USD  Income:Salary
+--------------------
+                   0
+#+end_example
