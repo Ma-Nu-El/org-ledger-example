@@ -12,6 +12,7 @@
 - [[#stats][Stats]]
 
 * Initial resources
+
 #+name: startup
 #+BEGIN_SRC ledger :noweb yes
 2016/07/01 * Opening Balance
@@ -20,6 +21,15 @@
     Assets:Steam                                          1000 USD
     Equity:Opening Balance
 #+END_SRC
+
+#+RESULTS: startup
+: Ledger 3.2.1-20200518, the command-line accounting tool
+:
+: Copyright (c) 2003-2019, John Wiegley.  All rights reserved.
+:
+: This program is made available under the terms of the BSD Public License.
+: See LICENSE file included with the distribution for details and disclaimer.
+: ]
 
 
 * Income
@@ -30,6 +40,12 @@
     Assets:Some Bank                                      200000 USD
     Income:Salary
 #+END_SRC
+
+#+RESULTS: income
+:           200000 USD  Assets:Some Bank
+:          -200000 USD  Income:Salary
+: --------------------
+:                    0
 
 * Outcome
 
@@ -52,6 +68,21 @@
     Expenses:Game                                         2000 USD
     Assets:Steam
 #+END_SRC
+
+#+RESULTS: expenses
+#+begin_example
+           -6780 USD  Assets
+           -4280 USD    Cash
+            -500 USD    Itunes
+           -2000 USD    Steam
+            6780 USD  Expenses
+             500 USD    App
+            1200 USD    Book
+            3080 USD    Food
+            2000 USD    Game
+--------------------
+                   0
+#+end_example
 
 * Stats
 
